@@ -1,6 +1,6 @@
-import { ProgrammingLanguageValidator } from "./interface";
+import type { ProgrammingLanguageValidator } from "./interface";
 
-export async function isLanguageValid(input: string, v: ProgrammingLanguageValidator): Promise<boolean> {
+export async function isVariableValid(input: string, v: ProgrammingLanguageValidator): Promise<boolean> {
   if (v.isValid) {
     return await v.isValid(input);
   } else { // simple logic for most languages

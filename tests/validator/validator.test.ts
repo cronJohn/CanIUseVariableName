@@ -1,23 +1,18 @@
 import {validatorLibrary} from "../../lib/validators/langs";
+import {isVariableValid} from "../../lib/validators/utils";
+import chalk from "chalk";
 
 describe("Test if language validators work", () => {
-  for (const [key, value] of Object.entries(validatorLibrary)) {
-    describe(`Language: ${key}`, () => {
-      test("Test valid names", async () => {
-        if (value?.isValid) {
-          for (const validName of value.testValidNames) {
-            await expect(value.isValid(validName)).resolves.toBe(true);
-          }
-        } else expect(value).toBeUndefined();
-      });
+  const testCases = Object.entries(validatorLibrary).flatMap(([key, value]) => [
+    ...value.testValidNames.map((name) => [key, name, `is ${chalk.green("valid")}`, true] as const),
+    ...value.testInvalidNames.map((name) => [key, name, `is ${chalk.red("invalid")}`, false] as const),
+  ]);
 
-      test("Test invalid names", async () => {
-        if (value?.isValid) {
-          for (const invalidName of value.testInvalidNames) {
-            await expect(value.isValid(invalidName)).resolves.toBe(false);
-          }
-        } else expect(value).toBeUndefined();
-      });
-    });
-  }
+  test.each(testCases)(
+    `Language: %s | '${chalk.blue("%s")}' %s`,
+    async (key, name, _, expected) => {
+      await expect(isVariableValid(name, validatorLibrary[key])).resolves.toBe(expected);
+    }
+  );
 });
+
