@@ -9,18 +9,24 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
             return regex.test(input);
         },
         testValidNames: ['foo', 'bar', '_foo', '$foo', 'foo1'],
-        testInvalidNames: ['in', 'while', '1foo', 'return'],
+        testInvalidNames: ['in', 'while', 'return', '1foo'],
     },
     go: {
         reservedKeywords: ['break', 'default', 'func', 'interface', 'select', 'case', 'defer', 'go', 'map', 'struct', 'chan', 'else', 'goto', 'package', 'switch', 'const', 'fallthrough', 'if', 'range', 'type', 'continue', 'for', 'import', 'return', 'var'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
-        testInvalidNames: ['func', '1foo', '$foo', 'return'],
+        testInvalidNames: ['func', 'return', '1foo', '$foo'],
     },
     rust: {
         reservedKeywords: ['as', 'break', 'const', 'continue', 'crate', 'else', 'enum', 'extern',  'false', 'fn', 'for', 'if', 'impl', 'in', 'let', 'loop', 'match', 'mod',  'move', 'mut', 'pub', 'ref', 'return', 'self', 'Self', 'static', 'struct',  'super', 'trait', 'true', 'type', 'unsafe', 'use', 'where', 'while',  'async', 'await', 'dyn',  'abstract', 'become', 'box', 'do', 'final', 'macro', 'override', 'priv',  'typeof', 'unsized', 'virtual', 'yield', 'try', 'gen',],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
-        testInvalidNames: ['crate', '1foo', '$foo', 'impl'],
-    }
+        testInvalidNames: ['crate', 'impl', '1foo', '$foo'],
+    },
+    zig: {
+        reservedKeywords: ['addrspace',  'align',  'allowzero',  'and',  'anyframe',  'anytype',  'asm',  'async',  'await',  'break',  'callconv',  'catch',  'comptime',  'const',  'continue',  'defer',  'else',  'enum',  'errdefer',  'error',  'export',  'extern',  'fn',  'for',  'if',  'inline',  'noalias',  'nosuspend',  'noinline',  'opaque',  'or',  'orelse',  'packed',  'pub',  'resume',  'return',  'linksection',  'struct',  'suspend',  'switch',  'test',  'threadlocal',  'try',  'union',  'unreachable',  'usingnamespace',  'var',  'volatile',  'while'],
+        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+        testInvalidNames: ['comptime', 'errdefer', '1foo', '$foo'],
+    },
 }
