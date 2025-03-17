@@ -17,4 +17,10 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['func', '1foo', '$foo', 'return'],
     },
+    rust: {
+        reservedKeywords: ['as', 'break', 'const', 'continue', 'crate', 'else', 'enum', 'extern',  'false', 'fn', 'for', 'if', 'impl', 'in', 'let', 'loop', 'match', 'mod',  'move', 'mut', 'pub', 'ref', 'return', 'self', 'Self', 'static', 'struct',  'super', 'trait', 'true', 'type', 'unsafe', 'use', 'where', 'while',  'async', 'await', 'dyn',  'abstract', 'become', 'box', 'do', 'final', 'macro', 'override', 'priv',  'typeof', 'unsized', 'virtual', 'yield', 'try', 'gen',],
+        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+        testInvalidNames: ['crate', '1foo', '$foo', 'impl'],
+    }
 }
