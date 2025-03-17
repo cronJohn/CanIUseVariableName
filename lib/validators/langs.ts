@@ -29,4 +29,25 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['comptime', 'errdefer', '1foo', '$foo'],
     },
+
+    c: {
+        reservedKeywords: ['auto',  'break',  'case',  'char',  'const',  'continue',  'default',  'do',  'double',  'else',  'enum',  'extern',  'float',  'for',  'goto',  'if',  'inline',  'int',  'long',  'register',  'restrict',  'return',  'short',  'signed',  'sizeof',  'static',  'struct',  'switch',  'typedef',  'union',  'unsigned',  'void',  'volatile',  'while',  '_Alignas',  '_Alignof',  '_Atomic'],
+        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+        testInvalidNames: ['double', 'restrict', '1foo', '$foo'],
+    },
+
+    "c++": {
+        reservedKeywords: ['alignas',  'alignof',  'and',  'and_eq',  'asm',  'atomic_cancel',  'atomic_commit',  'atomic_noexcept',  'auto',  'bitand',  'bitor',  'bool',  'break',  'case',  'catch',  'char',  'char8_t',  'char16_t',  'char32_t',  'class',  'compl',  'concept',  'const',  'consteval',  'constexpr',  'constinit',  'const_cast',  'continue',  'contract_assert',  'co_await',  'co_return',  'co_yield',  'decltype',  'default',  'delete',  'do',  'double',  'dynamic_cast',  'else',  'enum',  'explicit',  'export',  'extern',  'false',  'float',  'for',  'friend',  'goto',  'if',  'inline',  'int',  'long',  'mutable',  'namespace',  'new',  'noexcept',  'not',  'not_eq',  'nullptr',  'operator',  'or',  'or_eq',  'private',  'protected',  'public',  'reflexpr',  'register',  'reinterpret_cast',  'requires',  'return',  'short',  'signed',  'sizeof',  'static',  'static_assert',  'static_cast',  'struct',  'switch',  'synchronized',  'template',  'this',  'thread_local',  'throw',  'true',  'try',  'typedef',  'typeid',  'typename',  'union',  'unsigned',  'using',  'virtual',  'void',  'volatile',  'wchar_t',  'while',  'xor',  'xor_eq'],
+        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+        testInvalidNames: ['friend', 'virtual', '1foo', '$foo'],
+    },
+
+    "c#": {
+        reservedKeywords: ['abstract',  'as',  'base',  'bool',  'break',  'byte',  'case',  'catch',  'char',  'checked',  'class',  'const',  'continue',  'decimal',  'default',  'delegate',  'do',  'double',  'else',  'enum',  'event',  'explicit',  'extern',  'false',  'finally',  'fixed',  'float',  'for',  'foreach',  'goto',  'if',  'implicit',  'in',  'int',  'interface',  'internal',  'is',  'lock',  'long',  'namespace',  'new',  'null',  'object',  'operator',  'out',  'override',  'params',  'private',  'protected',  'public',  'readonly',  'ref',  'return',  'sbyte',  'sealed',  'short',  'sizeof',  'stackalloc',  'static',  'string',  'struct',  'switch',  'this',  'throw',  'true',  'try',  'typeof',  'uint',  'ulong',  'unchecked',  'unsafe',  'ushort',  'using',  'virtual',  'void',  'volatile',  'while'],
+        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+        testInvalidNames: ['params', 'sealed', '1foo', '$foo'],
+   },
 }
