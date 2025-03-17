@@ -50,4 +50,18 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['params', 'sealed', '1foo', '$foo'],
    },
+
+   java: {
+       reservedKeywords: ['abstract',  'assert',  'boolean',  'break',  'byte',  'case',  'catch',  'char',  'class',  'const',  'continue',  'default',  'do',  'double',  'else',  'enum',  'extends',  'final',  'finally',  'float',  'for',  'goto',  'if',  'implements',  'import',  'instanceof',  'int',  'interface',  'long',  'native',  'new',  'package',  'private',  'protected',  'public',  'return',  'short',  'static',  'strictfp',  'super',  'switch',  'synchronized',  'this',  'throw',  'throws',  'transient',  'try',  'void',  'volatile',  'while'],
+       syntaxRegex: /^[a-zA-Z_$][a-zA-Z0-9_$]*$/,
+       testValidNames: ['foo', 'bar', '_foo', '$foo', 'foo1'],
+       testInvalidNames: ['native', 'super', '1foo'],
+   },
+
+   kotlin: {
+       reservedKeywords: ['as',  'as?',  'break',  'class',  'continue',  'do',  'else',  'false',  'for',  'fun',  'if',  'in',  '!in',  'interface',  'is',  '!is',  'null',  'object',  'package',  'return',  'super',  'this',  'throw',  'true',  'try',  'typealias',  'typeof',  'val',  'var',  'when',  'while'],
+       syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+       testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+       testInvalidNames: ['fun', 'when', '1foo', '$foo'],
+   },
 }
