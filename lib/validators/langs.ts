@@ -78,4 +78,11 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
        testInvalidNames: ['lambda', 'pass', '1foo', '$foo'],
    },
+
+   ruby: {
+       reservedKeywords: ['__ENCODING__',  '__LINE__',  '__FILE__',  'BEGIN',  'END',  'alias',  'and',  'begin',  'break',  'case',  'class',  'def',  'defined?',  'do',  'else',  'elsif',  'end',  'ensure',  'false',  'for',  'if',  'in',  'module',  'next',  'nil',  'not',  'or',  'redo',  'rescue',  'retry',  'return',  'self',  'super',  'then',  'true',  'undef',  'unless',  'until',  'when',  'while',  'yield'],
+       syntaxRegex: /^[a-zA-Z_$][a-zA-Z0-9_]*$/,
+       testValidNames: ['foo', 'bar', '_foo', '__LINE__foo', 'foo1', '$foo'],
+       testInvalidNames: ['rescue', 'retry', '__LINE__', '1foo'],
+   },
 }
