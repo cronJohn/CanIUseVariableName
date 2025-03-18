@@ -1,5 +1,5 @@
-import {validatorLibrary} from "../../lib/validators/langs";
-import {getAllValidLanguages, isVariableValid} from "../../lib/validators/utils";
+import {validatorLibrary} from "$lib/validators/langs";
+import {getAllValidLanguages, isVariableValid} from "$lib/validators/utils";
 import chalk from "chalk";
 
 describe("Test if language validators work", () => {

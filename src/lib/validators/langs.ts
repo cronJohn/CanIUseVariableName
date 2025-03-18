@@ -1,4 +1,4 @@
-import type { ProgrammingLanguageValidator } from "./interface";
+import type { ProgrammingLanguageValidator } from "$lib/validators/interface";
 
 export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
     javascript: {

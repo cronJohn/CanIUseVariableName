@@ -1,5 +1,5 @@
-import type { ProgrammingLanguageValidator } from "./interface";
-import { validatorLibrary } from "./langs";
+import type { ProgrammingLanguageValidator } from "$lib/validators/interface";
+import { validatorLibrary } from "$lib/validators/langs";
 
 export async function isVariableValid(input: string, v: ProgrammingLanguageValidator): Promise<boolean> {
   if (v.isValid) {
