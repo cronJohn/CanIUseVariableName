@@ -71,4 +71,11 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
         testValidNames: ['foo', 'bar', '_foo', 'foo$', 'foo1', '💯', '💻s'],
         testInvalidNames: ['rethrows', 'guard', '1foo', '$foo'],
    },
+
+   python: {
+       reservedKeywords: ['and',  'as',  'assert',  'async',  'await',  'break',  'class',  'continue',  'def',  'del',  'elif',  'else',  'except',  'False',  'finally',  'for',  'from',  'global',  'if',  'import',  'in',  'is',  'lambda',  'None',  'nonlocal',  'not',  'or',  'pass',  'raise',  'return',  'True',  'try',  'while',  'with',  'yield'],
+       syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
+       testValidNames: ['foo', 'bar', '_foo', 'foo1'],
+       testInvalidNames: ['lambda', 'pass', '1foo', '$foo'],
+   },
 }
