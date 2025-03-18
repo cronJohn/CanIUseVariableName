@@ -1,5 +1,5 @@
 import {validatorLibrary} from "../../lib/validators/langs";
-import {isVariableValid} from "../../lib/validators/utils";
+import {getAllValidLanguages, isVariableValid} from "../../lib/validators/utils";
 import chalk from "chalk";
 
 describe("Test if language validators work", () => {
@@ -16,3 +16,26 @@ describe("Test if language validators work", () => {
   );
 });
 
+describe("Test variable name for all languages", () => {
+    const validInput: string = "foo";
+    const invalidInput: string = "1foo";
+    it(`${chalk.blue(validInput)} should return ${chalk.green(true)} for all languages`, async () => {
+        const result = await getAllValidLanguages(validInput);
+        expect(result).toEqual(Object.keys(validatorLibrary));
+    })
+
+    it(`${chalk.blue(invalidInput)} should return ${chalk.red(false)} for all languages`, async () => {
+        const result = await getAllValidLanguages(invalidInput);
+        expect(result).toEqual([]);
+    })
+
+    it("Emojis should be exclusive to Swift", async () => {
+        const result = await getAllValidLanguages("💯");
+        expect(result).toEqual(["swift"]);
+    })
+
+    it("$ is allowed as first character for some langauges", async () => {
+        const result = await getAllValidLanguages("$foo");
+        expect(result).toEqual(["javascript", "java", "ruby"]);
+    })
+});
