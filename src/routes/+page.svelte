@@ -17,15 +17,35 @@
     :global(body) {
         overflow-x: hidden;
     }
+
+    .valid {
+        border: 2px solid green;
+    }
+
+    .invalid {
+        border: 2px solid red;
+    }
 </style>
 
 <main class="flex min-h-screen flex-col items-center mb-10">
-    <section class="flex flex-col w-full mt-25vh mb-4 justify-center items-center">
+    <section class="flex flex-col w-full mt-25vh justify-center items-center">
         <h1 class="c-white font-main mb-3">Enter variable name</h1>
         <input type="text" autofocus bind:value={inputName} oninput={async () => {
             languages = await getAllValidLanguages(inputName);
         }}
+        class:invalid={inputName.length > 0 && languages.length == 0}
+        class:valid={languages.length > 0}
         class="rounded border-none font-main w-300px font-size-1.5em text-center py-.2em" />
+        <span class="relative mt-1 rounded-md text-sm tracking-wider font-main font-bold"
+        class:c-green={languages.length > 0}
+        class:c-red={inputName.length > 0 && languages.length == 0}
+        >
+            {#if languages.length > 0}
+                Valid
+            {:else if inputName.length > 0}
+                Invalid
+            {/if}
+        </span>
     </section>
 
     <section class="flex flex-wrap w-500px">
