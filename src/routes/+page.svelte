@@ -5,11 +5,16 @@
     import {cubicOut} from "svelte/easing";
 
     import { getAllValidLanguages } from "$lib/validators/utils";
+    import { validatorLibrary } from "$lib/validators/langs";
 
     var inputName: string = $state("");
     var languages: string[] = $state([]);
 
     $inspect(languages);
+
+    const getIconName = (language: string) => {
+        return validatorLibrary[language].iconName || language.toLowerCase();
+    }
 
 </script>
 
@@ -19,11 +24,11 @@
     }
 
     .valid {
-        border: 2px solid green;
+        border: 3px solid green;
     }
 
     .invalid {
-        border: 2px solid red;
+        border: 3px solid red;
     }
 </style>
 
@@ -48,12 +53,17 @@
         </span>
     </section>
 
-    <section class="flex flex-wrap w-500px">
+    <section class="flex flex-gap-2 flex-wrap w-500px">
         {#each languages as language, i (language)}
-            <h2 class="c-white relative bg-#2a2a2b rounded flex-[1_0_200px] text-center py-2.5 m-1.3 px-2 font-main"
+            <div
             in:scale={{ start: 0, delay: (70 * i), duration: 300, easing: cubicOut }} 
             out:scale={{ start: 0, duration: 300, easing: cubicOut }}
-            animate:flip={{duration: 500 }}>{language}</h2>
+            animate:flip={{duration: 500 }}
+            class="c-white relative bg-#2a2a2b rounded flex-[1_0_200px] flex flex-justify-between items-center"
+            >
+                <h2 class=" text-center py-2.5 m-1.3 px-2 font-main">{language}</h2>
+                <div class="i-skill-icons:{getIconName(language)} size-50px"></div>
+            </div>
         {/each}
     </section>
 </main>

@@ -1,7 +1,7 @@
 import type { ProgrammingLanguageValidator } from "$lib/validators/interface";
 
 export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
-    javascript: {
+    JavaScript: {
         reservedKeywords: ['abstract', 'as', 'async', 'await', 'boolean', 'break', 'byte', 'case', 'catch', 'char', 'class', 'const', 'continue', 'debugger', 'default', 'delete', 'do', 'double', 'else', 'enum', 'export', 'extends', 'false', 'final', 'finally', 'float', 'for', 'from', 'function', 'goto', 'if', 'implements', 'import', 'in', 'instanceof', 'int', 'interface', 'let', 'long', 'native', 'new', 'null', 'package', 'private', 'protected', 'public', 'return', 'short', 'static', 'super', 'switch', 'synchronized', 'this', 'throw', 'throws', 'transient', 'true', 'try', 'typeof', 'var', 'void', 'volatile', 'while', 'with', 'yield'],
         syntaxRegex: /^[a-zA-Z_$][a-zA-Z_$0-9]*$/,
         isValid: async (input: string) => { // hyperspecific regex from https://stackoverflow.com/a/9337047
@@ -11,75 +11,82 @@ export const validatorLibrary: Record<string, ProgrammingLanguageValidator> = {
         testValidNames: ['foo', 'bar', '_foo', '$foo', 'foo1'],
         testInvalidNames: ['in', 'while', 'return', '1foo'],
     },
-    go: {
+    Go: {
         reservedKeywords: ['break', 'default', 'func', 'interface', 'select', 'case', 'defer', 'go', 'map', 'struct', 'chan', 'else', 'goto', 'package', 'switch', 'const', 'fallthrough', 'if', 'range', 'type', 'continue', 'for', 'import', 'return', 'var'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['func', 'return', '1foo', '$foo'],
+        iconName: 'golang',
     },
-    rust: {
+    Rust: {
         reservedKeywords: ['as', 'break', 'const', 'continue', 'crate', 'else', 'enum', 'extern',  'false', 'fn', 'for', 'if', 'impl', 'in', 'let', 'loop', 'match', 'mod',  'move', 'mut', 'pub', 'ref', 'return', 'self', 'Self', 'static', 'struct',  'super', 'trait', 'true', 'type', 'unsafe', 'use', 'where', 'while',  'async', 'await', 'dyn',  'abstract', 'become', 'box', 'do', 'final', 'macro', 'override', 'priv',  'typeof', 'unsized', 'virtual', 'yield', 'try', 'gen',],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['crate', 'impl', '1foo', '$foo'],
     },
-    zig: {
+    Zig: {
         reservedKeywords: ['addrspace',  'align',  'allowzero',  'and',  'anyframe',  'anytype',  'asm',  'async',  'await',  'break',  'callconv',  'catch',  'comptime',  'const',  'continue',  'defer',  'else',  'enum',  'errdefer',  'error',  'export',  'extern',  'fn',  'for',  'if',  'inline',  'noalias',  'nosuspend',  'noinline',  'opaque',  'or',  'orelse',  'packed',  'pub',  'resume',  'return',  'linksection',  'struct',  'suspend',  'switch',  'test',  'threadlocal',  'try',  'union',  'unreachable',  'usingnamespace',  'var',  'volatile',  'while'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['comptime', 'errdefer', '1foo', '$foo'],
+        iconName: 'zig-dark',
     },
 
-    c: {
+    C: {
         reservedKeywords: ['auto',  'break',  'case',  'char',  'const',  'continue',  'default',  'do',  'double',  'else',  'enum',  'extern',  'float',  'for',  'goto',  'if',  'inline',  'int',  'long',  'register',  'restrict',  'return',  'short',  'signed',  'sizeof',  'static',  'struct',  'switch',  'typedef',  'union',  'unsigned',  'void',  'volatile',  'while',  '_Alignas',  '_Alignof',  '_Atomic'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['double', 'restrict', '1foo', '$foo'],
     },
 
-    "c++": {
+    "C++": {
         reservedKeywords: ['alignas',  'alignof',  'and',  'and_eq',  'asm',  'atomic_cancel',  'atomic_commit',  'atomic_noexcept',  'auto',  'bitand',  'bitor',  'bool',  'break',  'case',  'catch',  'char',  'char8_t',  'char16_t',  'char32_t',  'class',  'compl',  'concept',  'const',  'consteval',  'constexpr',  'constinit',  'const_cast',  'continue',  'contract_assert',  'co_await',  'co_return',  'co_yield',  'decltype',  'default',  'delete',  'do',  'double',  'dynamic_cast',  'else',  'enum',  'explicit',  'export',  'extern',  'false',  'float',  'for',  'friend',  'goto',  'if',  'inline',  'int',  'long',  'mutable',  'namespace',  'new',  'noexcept',  'not',  'not_eq',  'nullptr',  'operator',  'or',  'or_eq',  'private',  'protected',  'public',  'reflexpr',  'register',  'reinterpret_cast',  'requires',  'return',  'short',  'signed',  'sizeof',  'static',  'static_assert',  'static_cast',  'struct',  'switch',  'synchronized',  'template',  'this',  'thread_local',  'throw',  'true',  'try',  'typedef',  'typeid',  'typename',  'union',  'unsigned',  'using',  'virtual',  'void',  'volatile',  'wchar_t',  'while',  'xor',  'xor_eq'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['friend', 'virtual', '1foo', '$foo'],
+        iconName: 'cpp',
     },
 
-    "c#": {
+    "C#": {
         reservedKeywords: ['abstract',  'as',  'base',  'bool',  'break',  'byte',  'case',  'catch',  'char',  'checked',  'class',  'const',  'continue',  'decimal',  'default',  'delegate',  'do',  'double',  'else',  'enum',  'event',  'explicit',  'extern',  'false',  'finally',  'fixed',  'float',  'for',  'foreach',  'goto',  'if',  'implicit',  'in',  'int',  'interface',  'internal',  'is',  'lock',  'long',  'namespace',  'new',  'null',  'object',  'operator',  'out',  'override',  'params',  'private',  'protected',  'public',  'readonly',  'ref',  'return',  'sbyte',  'sealed',  'short',  'sizeof',  'stackalloc',  'static',  'string',  'struct',  'switch',  'this',  'throw',  'true',  'try',  'typeof',  'uint',  'ulong',  'unchecked',  'unsafe',  'ushort',  'using',  'virtual',  'void',  'volatile',  'while'],
         syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
         testValidNames: ['foo', 'bar', '_foo', 'foo1'],
         testInvalidNames: ['params', 'sealed', '1foo', '$foo'],
+        iconName: 'cs',
    },
 
-   java: {
+   Java: {
        reservedKeywords: ['abstract',  'assert',  'boolean',  'break',  'byte',  'case',  'catch',  'char',  'class',  'const',  'continue',  'default',  'do',  'double',  'else',  'enum',  'extends',  'final',  'finally',  'float',  'for',  'goto',  'if',  'implements',  'import',  'instanceof',  'int',  'interface',  'long',  'native',  'new',  'package',  'private',  'protected',  'public',  'return',  'short',  'static',  'strictfp',  'super',  'switch',  'synchronized',  'this',  'throw',  'throws',  'transient',  'try',  'void',  'volatile',  'while'],
        syntaxRegex: /^[a-zA-Z_$][a-zA-Z0-9_$]*$/,
        testValidNames: ['foo', 'bar', '_foo', '$foo', 'foo1'],
        testInvalidNames: ['native', 'super', '1foo'],
+       iconName: 'java-dark',
    },
 
-   kotlin: {
+   Kotlin: {
        reservedKeywords: ['as',  'as?',  'break',  'class',  'continue',  'do',  'else',  'false',  'for',  'fun',  'if',  'in',  '!in',  'interface',  'is',  '!is',  'null',  'object',  'package',  'return',  'super',  'this',  'throw',  'true',  'try',  'typealias',  'typeof',  'val',  'var',  'when',  'while'],
        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
        testInvalidNames: ['fun', 'when', '1foo', '$foo'],
+       iconName: 'kotlin-dark',
    },
 
-   swift: {
+   Swift: {
         reservedKeywords: ['associatedtype',  'borrowing',  'class',  'consuming',  'deinit',  'enum',  'extension',  'fileprivate',  'func',  'import',  'init',  'inout',  'internal',  'let',  'open',  'operator',  'private',  'precedencegroup',  'protocol',  'public',  'rethrows',  'static',  'struct',  'subscript',  'typealias',  'var',  'break',  'case',  'catch',  'continue',  'default',  'defer',  'do',  'else',  'fallthrough',  'for',  'guard',  'if',  'in',  'repeat',  'return',  'throw',  'switch',  'where',  'while',  'Any',  'as',  'await',  'catch',  'false',  'is',  'nil',  'rethrows',  'self',  'Self',  'super',  'throw',  'throws',  'true',  'try'],
         syntaxRegex: /^[a-zA-Z_\u00A8\u00AA\u00AD\u00AF\u00B2-\u00B5\u00B7-\u00BA\u00BC-\u00BE\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF\u0100-\u02FF\u0370-\u167F\u1681-\u180D\u180F-\u1DBF\u1E00-\u1FFF\u200B-\u200D\u202A-\u202E\u203F-\u2040\u2054\u2060-\u206F\u2070-\u20CF\u2100-\u218F\u2460-\u24FF\u2776-\u2793\u2C00-\u2DFF\u2E80-\u2FFF\u3004-\u3007\u3021-\u302F\u3031-\u303F\u3040-\uD7FF\uF900-\uFD3D\uFD40-\uFDCF\uFDF0-\uFE1F\uFE30-\uFE44\uFE47-\uFFFF\u{10000}-\u{10FFFF}][a-zA-Z_\u00A8\u00AA\u00AD\u00AF\u00B2-\u00B5\u00B7-\u00BA\u00BC-\u00BE\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF\u0100-\u02FF\u0370-\u167F\u1681-\u180D\u180F-\u1DBF\u1E00-\u1FFF\u200B-\u200D\u202A-\u202E\u203F-\u2040\u2054\u2060-\u206F\u2070-\u20CF\u2100-\u218F\u2460-\u24FF\u2776-\u2793\u2C00-\u2DFF\u2E80-\u2FFF\u3004-\u3007\u3021-\u302F\u3031-\u303F\u3040-\uD7FF\uF900-\uFD3D\uFD40-\uFDCF\uFDF0-\uFE1F\uFE30-\uFE44\uFE47-\uFFFF\u{10000}-\u{10FFFF}0-9$]*$/u,
         testValidNames: ['foo', 'bar', '_foo', 'foo$', 'foo1', '💯', '💻s'],
         testInvalidNames: ['rethrows', 'guard', '1foo', '$foo'],
    },
 
-   python: {
+   Python: {
        reservedKeywords: ['and',  'as',  'assert',  'async',  'await',  'break',  'class',  'continue',  'def',  'del',  'elif',  'else',  'except',  'False',  'finally',  'for',  'from',  'global',  'if',  'import',  'in',  'is',  'lambda',  'None',  'nonlocal',  'not',  'or',  'pass',  'raise',  'return',  'True',  'try',  'while',  'with',  'yield'],
        syntaxRegex: /^[a-zA-Z_][a-zA-Z0-9_]*$/,
        testValidNames: ['foo', 'bar', '_foo', 'foo1'],
        testInvalidNames: ['lambda', 'pass', '1foo', '$foo'],
+       iconName: 'python-dark',
    },
 
-   ruby: {
+   Ruby: {
        reservedKeywords: ['__ENCODING__',  '__LINE__',  '__FILE__',  'BEGIN',  'END',  'alias',  'and',  'begin',  'break',  'case',  'class',  'def',  'defined?',  'do',  'else',  'elsif',  'end',  'ensure',  'false',  'for',  'if',  'in',  'module',  'next',  'nil',  'not',  'or',  'redo',  'rescue',  'retry',  'return',  'self',  'super',  'then',  'true',  'undef',  'unless',  'until',  'when',  'while',  'yield'],
        syntaxRegex: /^[a-zA-Z_$][a-zA-Z0-9_]*$/,
        testValidNames: ['foo', 'bar', '_foo', '__LINE__foo', 'foo1', '$foo'],
