@@ -1,4 +1,2 @@
 # About
-Bun UnoCSS TypeScript Svelte stack with:
-- style reset
-- SPA
+- Check whether a string is a valid variable name in a variety of programming languages
