@@ -15,7 +15,7 @@ const config = {
 			strict: true
 		}),
         paths: {
-            base: isDev ? '' : process.env.BASE_PATH,
+            base: isDev ? '' : '/CanIUseVariableName',
         }
 	},
 };
