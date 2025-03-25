@@ -53,7 +53,7 @@
             class="rounded border-none font-main w-300px font-size-1.5em text-center py-.2em" />
         {/if}
         <button class="relative mt-1 bg-transparent b-none rounded-md text-sm tracking-wider font-main
-                       underline underline-offset-3"
+                       underline underline-offset-3 cursor-pointer"
         title="Toggle between valid and invalid languages"
         class:c-green={displayValid}
         class:c-red={!displayValid}
