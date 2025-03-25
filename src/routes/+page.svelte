@@ -76,13 +76,13 @@
 </main>
 
 {#snippet displayLanguages(languages: string[])}
-    <section class="flex flex-gap-2 flex-wrap w-500px">
+    <section class="flex flex-gap-2 flex-wrap justify-center w-500px">
         {#each languages as language, i (language)}
             <div
             in:scale|global={{ start: 0, delay: (70 * i), duration: 300, easing: cubicOut }} 
             out:scale|global={{ start: 0, duration: 300, easing: cubicOut }}
             animate:flip={{duration: 500 }}
-            class="c-white relative bg-#2a2a2b rounded flex-[1_0_200px] flex flex-justify-between items-center"
+            class="c-white relative bg-#2a2a2b rounded max-w-220px flex-[1_0_220px] flex justify-between items-center"
             >
                 <h2 class=" text-center py-2.5 m-1.3 px-2 font-main">{language}</h2>
                 <div class="i-skill-icons:{getIconName(language)} size-50px"></div>
