@@ -31,11 +31,11 @@ describe("Test variable name for all languages", () => {
 
     it("Emojis should be exclusive to Swift", async () => {
         const result = await getAllValidLanguages("💯");
-        expect(result).toEqual(["swift"]);
+        expect(result).toEqual(["Swift"]);
     })
 
     it("$ is allowed as first character for some langauges", async () => {
         const result = await getAllValidLanguages("$foo");
-        expect(result).toEqual(["javascript", "java", "ruby"]);
+        expect(result).toEqual(["JavaScript", "Java", "Ruby"]);
     })
 });
