@@ -10,7 +10,7 @@ export default defineConfig({
         presetWebFonts({
             provider: 'google',
             fonts: {
-                main: 'Inter',
+                main: ['Inter:400,700'],
             }
         }),
     ],

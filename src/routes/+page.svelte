@@ -8,9 +8,14 @@
     import { validatorLibrary } from "$lib/validators/langs";
 
     var inputName: string = $state("");
-    var languages: string[] = $state([]);
 
-    $inspect(languages);
+    var validLanguages: string[] = $state([]);
+    var invalidLanguages = $derived(Object.keys(validatorLibrary).filter((language) => !validLanguages.includes(language)));
+
+    var displayValid: boolean = $state(true);
+
+    // Since you can switch between valid and invalid languages, we need to keep track of the target length
+    const targetLanguageLength = $derived(displayValid ? validLanguages.length: invalidLanguages.length);
 
     const getIconName = (language: string) => {
         return validatorLibrary[language].iconName || language.toLowerCase();
@@ -36,23 +41,34 @@
     <section class="flex flex-col w-full mt-25vh justify-center items-center">
         <h1 class="c-white font-main mb-3">Enter variable name</h1>
         <input type="text" autofocus bind:value={inputName} oninput={async () => {
-            languages = await getAllValidLanguages(inputName);
+            validLanguages = await getAllValidLanguages(inputName);
         }}
-        class:invalid={inputName.length > 0 && languages.length == 0}
-        class:valid={languages.length > 0}
+        class:invalid={inputName.length > 0 && targetLanguageLength == 0}
+        class:valid={targetLanguageLength > 0}
         class="rounded border-none font-main w-300px font-size-1.5em text-center py-.2em" />
-        <span class="relative mt-1 rounded-md text-sm tracking-wider font-main font-bold"
-        class:c-green={languages.length > 0}
-        class:c-red={inputName.length > 0 && languages.length == 0}
+        <button class="relative mt-1 bg-transparent b-none rounded-md text-sm tracking-wider font-main
+                       underline underline-offset-3"
+        class:c-green={displayValid}
+        class:c-red={!displayValid}
+        class:hidden={inputName.length == 0}
+        onclick={() => displayValid = !displayValid}
         >
-            {#if languages.length > 0}
-                Valid
-            {:else if inputName.length > 0}
-                Invalid
+            {#if displayValid}
+                Valid for
+            {:else}
+                Invalid for
             {/if}
-        </span>
+        </button>
     </section>
 
+    {#if displayValid}
+        {@render displayLanguages(validLanguages)}
+    {:else}
+        {@render displayLanguages(invalidLanguages)}
+    {/if}
+</main>
+
+{#snippet displayLanguages(languages: string[])}
     <section class="flex flex-gap-2 flex-wrap w-500px">
         {#each languages as language, i (language)}
             <div
@@ -66,4 +82,4 @@
             </div>
         {/each}
     </section>
-</main>
+{/snippet}
